@@ -145,11 +145,8 @@ public final class RequireJS {
                 "    path: function(webJarId, path) {\n" +
                 "        console.error('The webjars.path() method of getting a WebJar path has been deprecated.  The RequireJS config in the ' + webJarId + ' WebJar may need to be updated.  Please file an issue: http://github.com/webjars/' + webJarId + '/issues/new');\n" +
                 "        return " + webJarPath.toString() + ";\n" +
-                "    }\n" +
-                "};\n" +
-                "\n" +
-                "var require = {\n" +
-                "    callback: function() {\n" +
+                "    },\n" +
+                "    requirejs_callback: function() {\n" +
                 "        // Deprecated WebJars RequireJS plugin loader\n" +
                 "        define('webjars', function() {\n" +
                 "            return {\n" +
@@ -169,7 +166,9 @@ public final class RequireJS {
                 "        // All of the WebJar configs\n\n" +
                 webJarConfigsString +
                 "    }\n" +
-                "}";
+                "};\n" +
+                "\n" +
+                "var require = { callback: webjars.requirejs_callback }";
     }
 
     /**
